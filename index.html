@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Chegg ESG Dashboard</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f9f9f9;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      margin-bottom: 20px;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    nav button {
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    nav button:hover {
+      background: #0056b3;
+    }
+    .tab {
+      display: none;
+    }
+    .tab.active {
+      display: block;
+    }
+    .document {
+      margin-bottom: 20px;
+      padding: 15px;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+    }
+    .document h3 {
+      margin: 0 0 10px;
+      color: #007bff;
+      cursor: pointer;
+    }
+    .document-content {
+      display: none;
+      padding-top: 10px;
+      white-space: pre-line;
+    }
+    .chatbox {
+      margin-top: 30px;
+      padding: 15px;
+      background: #e9f1fb;
+      border-radius: 8px;
+    }
+    .chatbox input {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    .chat-response {
+      margin-top: 10px;
+      background: #fff;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+  <h1>📘 Chegg ESG Dashboard</h1>
+
+  <nav>
+    <button data-tab="policies">Chính Sách ESG</button>
+    <button data-tab="reports">Báo Cáo & Dữ Liệu ESG</button>
+    <button data-tab="resources">Tài Liệu Hữu Ích</button>
+  </nav>
+
+  <div id="tab-policies" class="tab active">
+    <h2>📄 Chính Sách ESG</h2>
+    <div id="policy-list">
+      <div class="document">
+        <h3>Environmental Policy (2022)</h3>
+        <div class="document-content">
+Chegg cam kết hoạt động bền vững và giảm thiểu tác động môi trường. Để đạt điều này, Chegg thực hiện các biện pháp như:
+- Tái chế văn phòng
+- Sử dụng hệ thống lọc nước thay cho chái nhựa
+- Đo Scope 1 & 2 emissions
+- Có quy trình đối chiếu dữ liệu ESG hàng năm
+        </div>
+      </div>
+      <div class="document">
+        <h3>Supplier Code of Conduct (2023)</h3>
+        <div class="document-content">
+Tài liệu này quy định rõ nghiêm cấm:
+- Lao động trẻ em và cưỡng bức
+- Phân biệt đối xử trong tuyển dụng
+- Hành vi tham nhũng, hối lộ bên trong chuỗi cung ứng
+Supplier phải:
+- Tuân thủ tiêu chuẩn đạo đức lao động
+- Báo cáo sai phạm nếu phát hiện
+        </div>
+      </div>
+      <div class="document">
+        <h3>Materiality Assessment Summary</h3>
+        <div class="document-content">
+Tóm tắt đánh giá vỪdn đề quan trọng:
+- Chegg đánh giá tầm quan trọng ESG từ quan điểm nhà đầu tư, người học, nhân viên
+- Yếu tố ESG được xếp hạng theo ảnh hưởng & độ cần thiết
+        </div>
+      </div>
+    </div>
+    <div class="chatbox">
+      <input type="text" id="chat-input" placeholder="Hỏi chính sách ESG... (VD: lao động trẻ em, emissions, bribery...)" onkeydown="if(event.key==='Enter') handleChat()">
+      <div id="chat-response" class="chat-response"></div>
+    </div>
+  </div>
+
+  <div id="tab-reports" class="tab">
+    <h2>📈 Báo Cáo & Dữ Liệu ESG</h2>
+    <p>Chức năng này sẽ cập nhật khi có file của tab 2.</p>
+  </div>
+
+  <div id="tab-resources" class="tab">
+    <h2>🔗 Tài Liệu Hữu Ích</h2>
+    <p>Sẽ hiển thị danh sách link hoặc file khi bổ sung.</p>
+  </div>
+
+  <script>
+    document.querySelectorAll('nav button').forEach(button => {
+      button.addEventListener('click', () => {
+        document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+        const id = button.getAttribute('data-tab');
+        document.getElementById(`tab-${id}`).classList.add('active');
+      });
+    });
+
+    document.addEventListener('click', (e) => {
+      if (e.target.matches('.document h3')) {
+        const content = e.target.nextElementSibling;
+        content.style.display = content.style.display === 'none' ? 'block' : 'none';
+      }
+    });
+
+    const knowledgeBase = [
+      {
+        keywords: ["phát thải", "emissions", "scope 1", "scope 2"],
+        answer: "Theo Environmental Policy, Chegg đo lường Scope 1 & 2 emissions và có cam kết bền vững."
+      },
+      {
+        keywords: ["lao động trẻ em", "child labor", "cưỡng bức", "forced labor"],
+        answer: "Supplier Code of Conduct nghiêm cấm lao động trẻ em và cưỡng bức."
+      },
+      {
+        keywords: ["materiality", "đánh giá", "quan trọng"],
+        answer: "Tài liệu Materiality Assessment nên đọc khi bạn muốn biết Chegg xác định ESG theo đối tượng nào."
+      }
+    ];
+
+    function handleChat() {
+      const input = document.getElementById("chat-input").value.toLowerCase();
+      let found = false;
+      for (const item of knowledgeBase) {
+        if (item.keywords.some(k => input.includes(k))) {
+          document.getElementById("chat-response").innerHTML = "🧠 " + item.answer;
+          found = true;
+          break;
+        }
+      }
+      if (!found) {
+        document.getElementById("chat-response").innerHTML = "❗ Không tìm thấy nội dung phù hợp. Hãy thử từ khóa khác hoặc duyệt danh sách bên trên.";
+      }
+    }
+  </script>
+</body>
+</html>
