@@ -41,6 +41,7 @@
       padding: 15px;
       background: #fff;
       border: 1px solid #ddd;
+      border-radius: 6 hvordan: none;
       border-radius: 6px;
     }
     .document h3 {
@@ -71,6 +72,10 @@
       padding: 10px;
       border: 1px solid #ccc;
       border-radius: 6px;
+      display: none; /* Ẩn mặc định */
+    }
+    .chat-response.active {
+      display: block; /* Hiển thị khi có nội dung */
     }
     .chat-response .chat-message {
       margin-bottom: 15px;
@@ -174,6 +179,8 @@
         chatResponse.innerHTML = userMessage + botMessage + chatResponse.innerHTML;
       }
 
+      // Hiển thị chat-response khi có nội dung
+      chatResponse.classList.add('active');
       inputEl.value = "";
     }
 
