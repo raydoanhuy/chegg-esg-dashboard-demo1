@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Chegg ESG Dashboard</title>
+  <!-- ---- Đoạn code CSS định dạng giao diện ---- -->
   <style>
     body {
       font-family: sans-serif;
@@ -13,6 +14,7 @@
     h1 {
       margin-bottom: 20px;
     }
+    /* Định dạng thanh điều hướng (nav) */
     nav {
       display: flex;
       justify-content: center;
@@ -30,18 +32,19 @@
     nav button:hover {
       background: #0056b3;
     }
+    /* Định dạng các tab nội dung */
     .tab {
       display: none;
     }
     .tab.active {
       display: block;
     }
+    /* Định dạng tài liệu (dùng cho tab khác nếu có) */
     .document {
       margin-bottom: 20px;
       padding: 15px;
       background: #fff;
       border: 1px solid #ddd;
-      border-radius: 6 hvordan: none;
       border-radius: 6px;
     }
     .document h3 {
@@ -54,6 +57,7 @@
       padding-top: 10px;
       white-space: pre-line;
     }
+    /* Định dạng chatbox */
     .chatbox {
       margin-top: 30px;
       padding: 15px;
@@ -66,6 +70,7 @@
       border-radius: 6px;
       border: 1px solid #ccc;
     }
+    /* Định dạng khu vực hiển thị tin nhắn chat */
     .chat-response {
       margin-top: 10px;
       background: #fff;
@@ -93,14 +98,17 @@
   </style>
 </head>
 <body>
+  <!-- ---- Đoạn code tiêu đề trang ---- -->
   <h1>📘 Chegg ESG Dashboard</h1>
 
+  <!-- ---- Đoạn code thanh điều hướng (nav) ---- -->
   <nav>
     <button data-tab="policies">ESG Policies</button>
     <button data-tab="reports">ESG Reports & Data</button>
     <button data-tab="resources">Helpful Resources</button>
   </nav>
 
+  <!-- ---- Đoạn code tab ESG Policies (chỉ chứa chatbox) ---- -->
   <div id="tab-policies" class="tab">
     <div class="chatbox">
       <input type="text" id="chat-input" placeholder="Ask about ESG policies... (e.g., child labor, emissions, bribery...)" onkeydown="if(event.key==='Enter') handleChat()">
@@ -108,17 +116,21 @@
     </div>
   </div>
 
+  <!-- ---- Đoạn code tab ESG Reports & Data ---- -->
   <div id="tab-reports" class="tab">
     <h2>📈 ESG Reports & Data</h2>
     <p>This section will be updated when report files are added.</p>
   </div>
 
+  <!-- ---- Đoạn code tab Helpful Resources ---- -->
   <div id="tab-resources" class="tab">
     <h2>🔗 Helpful Resources</h2>
     <p>This will display useful links or files once added.</p>
   </div>
 
+  <!-- ---- Đoạn code JavaScript xử lý logic ---- -->
   <script>
+    // Hàm thiết lập chuyển đổi giữa các tab
     function setupTabs() {
       document.querySelectorAll('nav button').forEach(button => {
         button.addEventListener('click', () => {
@@ -130,6 +142,7 @@
       });
     }
 
+    // Hàm xử lý mở/đóng nội dung tài liệu (hiện không dùng nhưng giữ lại)
     function setupDocumentToggle() {
       document.addEventListener('click', (e) => {
         if (e.target.matches('.document h3')) {
@@ -139,6 +152,7 @@
       });
     }
 
+    // Cơ sở dữ liệu cho chatbox (danh sách từ khóa và câu trả lời)
     const knowledgeBase = [
       {
         keywords: ["emissions", "scope 1", "scope 2", "phát thải", "khí thải"],
@@ -154,6 +168,7 @@
       }
     ];
 
+    // Hàm xử lý logic chatbox
     function handleChat() {
       const inputEl = document.getElementById("chat-input");
       if (!inputEl) return;
@@ -179,11 +194,12 @@
         chatResponse.innerHTML = userMessage + botMessage + chatResponse.innerHTML;
       }
 
-      // Hiển thị chat-response khi có nội dung
+      // Hiển thị khu vực chat-response khi có nội dung
       chatResponse.classList.add('active');
       inputEl.value = "";
     }
 
+    // Khởi tạo khi trang tải
     document.addEventListener('DOMContentLoaded', () => {
       setupTabs();
       setupDocumentToggle();
