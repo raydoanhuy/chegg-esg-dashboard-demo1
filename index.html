@@ -97,36 +97,6 @@
   </nav>
 
   <div id="tab-policies" class="tab">
-  
-        <div class="document-content">
-Chegg is committed to sustainability and minimizing environmental impact. Actions include:
-- Office recycling
-- Using water filtration instead of plastic bottles
-- Measuring Scope 1 & 2 emissions
-- Annual ESG data reconciliation
-        </div>
-      </div>
-      <div class="document">
-        <h3>Supplier Code of Conduct (2023)</h3>
-        <div class="document-content">
-This policy strictly prohibits:
-- Child labor and forced labor
-- Discrimination in hiring
-- Corruption and bribery in the supply chain
-Suppliers must:
-- Follow ethical labor standards
-- Report violations when found
-        </div>
-      </div>
-      <div class="document">
-        <h3>Materiality Assessment Summary</h3>
-        <div class="document-content">
-Summary of materiality assessment:
-- Chegg assesses ESG importance from the perspectives of investors, learners, and employees
-- ESG factors are ranked by impact and relevance
-        </div>
-      </div>
-    </div>
     <div class="chatbox">
       <input type="text" id="chat-input" placeholder="Ask about ESG policies... (e.g., child labor, emissions, bribery...)" onkeydown="if(event.key==='Enter') handleChat()">
       <div id="chat-response" class="chat-response"></div>
@@ -165,19 +135,19 @@ Summary of materiality assessment:
     }
 
     const knowledgeBase = [
-  {
-    keywords: ["emissions", "scope 1", "scope 2", "phát thải", "khí thải"],
-    answer: "According to the Environmental Policy, Chegg measures Scope 1 & 2 emissions and commits to sustainability."
-  },
-  {
-    keywords: ["child labor", "forced labor", "lao động trẻ em", "cưỡng bức lao động"],
-    answer: "The Supplier Code of Conduct strictly prohibits child labor and forced labor."
-  },
-  {
-    keywords: ["materiality", "assessment", "important", "đánh giá", "vấn đề trọng yếu"],
-    answer: "Read the Materiality Assessment Summary to understand how Chegg defines ESG significance across stakeholders."
-  }
-];
+      {
+        keywords: ["emissions", "scope 1", "scope 2", "phát thải", "khí thải"],
+        answer: "According to the Environmental Policy, Chegg measures Scope 1 & 2 emissions and commits to sustainability."
+      },
+      {
+        keywords: ["child labor", "forced labor", "lao động trẻ em", "cưỡng bức lao động"],
+        answer: "The Supplier Code of Conduct strictly prohibits child labor and forced labor."
+      },
+      {
+        keywords: ["materiality", "assessment", "important", "đánh giá", "vấn đề trọng yếu"],
+        answer: "Read the Materiality Assessment Summary to understand how Chegg defines ESG significance across stakeholders."
+      }
+    ];
 
     function handleChat() {
       const inputEl = document.getElementById("chat-input");
