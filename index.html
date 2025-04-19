@@ -96,7 +96,47 @@
     <button data-tab="resources">Helpful Resources</button>
   </nav>
 
-       <div id="tab-reports" class="tab">
+  <div id="tab-policies" class="tab">
+    <h2>📄 ESG Policies</h2>
+    <div id="policy-list">
+      <div class="document">
+        <h3>Environmental Policy (2022)</h3>
+        <div class="document-content">
+Chegg is committed to sustainability and minimizing environmental impact. Actions include:
+- Office recycling
+- Using water filtration instead of plastic bottles
+- Measuring Scope 1 & 2 emissions
+- Annual ESG data reconciliation
+        </div>
+      </div>
+      <div class="document">
+        <h3>Supplier Code of Conduct (2023)</h3>
+        <div class="document-content">
+This policy strictly prohibits:
+- Child labor and forced labor
+- Discrimination in hiring
+- Corruption and bribery in the supply chain
+Suppliers must:
+- Follow ethical labor standards
+- Report violations when found
+        </div>
+      </div>
+      <div class="document">
+        <h3>Materiality Assessment Summary</h3>
+        <div class="document-content">
+Summary of materiality assessment:
+- Chegg assesses ESG importance from the perspectives of investors, learners, and employees
+- ESG factors are ranked by impact and relevance
+        </div>
+      </div>
+    </div>
+    <div class="chatbox">
+      <input type="text" id="chat-input" placeholder="Ask about ESG policies... (e.g., child labor, emissions, bribery...)" onkeydown="if(event.key==='Enter') handleChat()">
+      <div id="chat-response" class="chat-response"></div>
+    </div>
+  </div>
+
+  <div id="tab-reports" class="tab">
     <h2>📈 ESG Reports & Data</h2>
     <p>This section will be updated when report files are added.</p>
   </div>
