@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Chegg ESG Dashboard</title>
@@ -91,59 +91,59 @@
   <h1>📘 Chegg ESG Dashboard</h1>
 
   <nav>
-    <button data-tab="policies">Chính Sách ESG</button>
-    <button data-tab="reports">Báo Cáo & Dữ Liệu ESG</button>
-    <button data-tab="resources">Tài Liệu Hữu Ích</button>
+    <button data-tab="policies">ESG Policies</button>
+    <button data-tab="reports">ESG Reports & Data</button>
+    <button data-tab="resources">Helpful Resources</button>
   </nav>
 
   <div id="tab-policies" class="tab">
-    <h2>📄 Chính Sách ESG</h2>
+    <h2>📄 ESG Policies</h2>
     <div id="policy-list">
       <div class="document">
         <h3>Environmental Policy (2022)</h3>
         <div class="document-content">
-Chegg cam kết hoạt động bền vững và giảm thiểu tác động môi trường. Để đạt điều này, Chegg thực hiện các biện pháp như:
-- Tái chế văn phòng
-- Sử dụng hệ thống lọc nước thay cho chai nhựa
-- Đo Scope 1 & 2 emissions
-- Có quy trình đối chiếu dữ liệu ESG hàng năm
+Chegg is committed to sustainability and minimizing environmental impact. Actions include:
+- Office recycling
+- Using water filtration instead of plastic bottles
+- Measuring Scope 1 & 2 emissions
+- Annual ESG data reconciliation
         </div>
       </div>
       <div class="document">
         <h3>Supplier Code of Conduct (2023)</h3>
         <div class="document-content">
-Tài liệu này quy định rõ nghiêm cấm:
-- Lao động trẻ em và cưỡng bức
-- Phân biệt đối xử trong tuyển dụng
-- Hành vi tham nhũng, hối lộ bên trong chuỗi cung ứng
-Supplier phải:
-- Tuân thủ tiêu chuẩn đạo đức lao động
-- Báo cáo sai phạm nếu phát hiện
+This policy strictly prohibits:
+- Child labor and forced labor
+- Discrimination in hiring
+- Corruption and bribery in the supply chain
+Suppliers must:
+- Follow ethical labor standards
+- Report violations when found
         </div>
       </div>
       <div class="document">
         <h3>Materiality Assessment Summary</h3>
         <div class="document-content">
-Tóm tắt đánh giá vấn đề quan trọng:
-- Chegg đánh giá tầm quan trọng ESG từ quan điểm nhà đầu tư, người học, nhân viên
-- Yếu tố ESG được xếp hạng theo ảnh hưởng & độ cần thiết
+Summary of materiality assessment:
+- Chegg assesses ESG importance from the perspectives of investors, learners, and employees
+- ESG factors are ranked by impact and relevance
         </div>
       </div>
     </div>
     <div class="chatbox">
-      <input type="text" id="chat-input" placeholder="Hỏi chính sách ESG... (VD: lao động trẻ em, emissions, bribery...)" onkeydown="if(event.key==='Enter') handleChat()">
+      <input type="text" id="chat-input" placeholder="Ask about ESG policies... (e.g., child labor, emissions, bribery...)" onkeydown="if(event.key==='Enter') handleChat()">
       <div id="chat-response" class="chat-response"></div>
     </div>
   </div>
 
   <div id="tab-reports" class="tab">
-    <h2>📈 Báo Cáo & Dữ Liệu ESG</h2>
-    <p>Chức năng này sẽ cập nhật khi có file của tab 2.</p>
+    <h2>📈 ESG Reports & Data</h2>
+    <p>This section will be updated when report files are added.</p>
   </div>
 
   <div id="tab-resources" class="tab">
-    <h2>🔗 Tài Liệu Hữu Ích</h2>
-    <p>Sẽ hiển thị danh sách link hoặc file khi bổ sung.</p>
+    <h2>🔗 Helpful Resources</h2>
+    <p>This will display useful links or files once added.</p>
   </div>
 
   <script>
@@ -169,16 +169,16 @@ Tóm tắt đánh giá vấn đề quan trọng:
 
     const knowledgeBase = [
       {
-        keywords: ["phát thải", "emissions", "scope 1", "scope 2"],
-        answer: "Theo Environmental Policy, Chegg đo lường Scope 1 & 2 emissions và có cam kết bền vững."
+        keywords: ["emissions", "scope 1", "scope 2"],
+        answer: "According to the Environmental Policy, Chegg measures Scope 1 & 2 emissions and commits to sustainability."
       },
       {
-        keywords: ["lao động trẻ em", "child labor", "cưỡng bức", "forced labor"],
-        answer: "Supplier Code of Conduct nghiêm cấm lao động trẻ em và cưỡng bức."
+        keywords: ["child labor", "forced labor"],
+        answer: "The Supplier Code of Conduct strictly prohibits child labor and forced labor."
       },
       {
-        keywords: ["materiality", "đánh giá", "quan trọng"],
-        answer: "Tài liệu Materiality Assessment nên đọc khi bạn muốn biết Chegg xác định ESG theo đối tượng nào."
+        keywords: ["materiality", "assessment", "important"],
+        answer: "Read the Materiality Assessment Summary to understand how Chegg defines ESG significance across stakeholders."
       }
     ];
 
@@ -193,7 +193,7 @@ Tóm tắt đánh giá vấn đề quan trọng:
 
       for (const item of knowledgeBase) {
         if (item.keywords.some(k => input.toLowerCase().includes(k))) {
-          const userMessage = `<div class="chat-message user-message">Bạn: ${input}</div>`;
+          const userMessage = `<div class="chat-message user-message">You: ${input}</div>`;
           const botMessage = `<div class="chat-message bot-message">🧠 ${item.answer}</div>`;
           chatResponse.innerHTML = userMessage + botMessage + chatResponse.innerHTML;
           found = true;
@@ -202,8 +202,8 @@ Tóm tắt đánh giá vấn đề quan trọng:
       }
 
       if (!found) {
-        const userMessage = `<div class="chat-message user-message">Bạn: ${input}</div>`;
-        const botMessage = `<div class="chat-message bot-message">❗ Không tìm thấy nội dung phù hợp. Hãy thử từ khóa khác hoặc duyệt danh sách bên trên.</div>`;
+        const userMessage = `<div class="chat-message user-message">You: ${input}</div>`;
+        const botMessage = `<div class="chat-message bot-message">❗ No relevant content found. Try another keyword or refer to the documents above.</div>`;
         chatResponse.innerHTML = userMessage + botMessage + chatResponse.innerHTML;
       }
 
