@@ -14,6 +14,7 @@
     h1 {
       margin-bottom: 20px;
     }
+    /* Định dạng thanh điều hướng (nav) */
     nav {
       display: flex;
       justify-content: center;
@@ -31,12 +32,32 @@
     nav button:hover {
       background: #0056b3;
     }
+    /* Định dạng các tab nội dung */
     .tab {
       display: none;
     }
     .tab.active {
       display: block;
     }
+    /* Định dạng tài liệu (dùng cho tab Reports và các tab khác nếu có) */
+    .document {
+      margin-bottom: 20px;
+      padding: 15px;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+    }
+    .document h3 {
+      margin: 0 0 10px;
+      color: #007bff;
+      cursor: pointer;
+    }
+    .document-content {
+      display: none;
+      padding-top: 10px;
+      white-space: pre-line;
+    }
+    /* Định dạng chatbox */
     .chatbox {
       margin-top: 30px;
       padding: 15px;
@@ -49,16 +70,17 @@
       border-radius: 6px;
       border: 1px solid #ccc;
     }
+    /* Định dạng khu vực hiển thị tin nhắn chat */
     .chat-response {
       margin-top: 10px;
       background: #fff;
       padding: 10px;
       border: 1px solid #ccc;
       border-radius: 6px;
-      display: none;
+      display: none; /* Ẩn mặc định */
     }
     .chat-response.active {
-      display: block;
+      display: block; /* Hiển thị khi có nội dung */
     }
     .chat-response .chat-message {
       margin-bottom: 15px;
@@ -73,54 +95,200 @@
       background: #ffffff;
       border: 1px solid #ddd;
     }
-    details summary {
-      font-size: 1.1em;
-      font-weight: bold;
-      color: #007bff;
-      cursor: pointer;
-      margin-bottom: 10px;
-    }
-    .report-content {
-      padding-left: 15px;
-      margin-bottom: 15px;
-    }
   </style>
 </head>
 <body>
+  <!-- ---- Đoạn code tiêu đề trang ---- -->
   <h1>📘 Chegg ESG Dashboard</h1>
+
+  <!-- ---- Đoạn code thanh điều hướng (nav) ---- -->
   <nav>
     <button data-tab="policies">ESG Policies</button>
     <button data-tab="reports">ESG Reports & Data</button>
     <button data-tab="resources">Helpful Resources</button>
   </nav>
+
+  <!-- ---- Đoạn code tab ESG Policies (chỉ chứa chatbox) ---- -->
   <div id="tab-policies" class="tab">
     <div class="chatbox">
       <input type="text" id="chat-input" placeholder="Ask about ESG policies... (e.g., child labor, emissions, bribery...)" onkeydown="if(event.key==='Enter') handleChat()">
       <div id="chat-response" class="chat-response"></div>
     </div>
   </div>
+
+  <!-- ---- Đoạn code tab ESG Reports & Data ---- -->
   <div id="tab-reports" class="tab">
     <h2>📈 ESG Reports & Data</h2>
-    <details open>
-      <summary>📂 Chegg ESG Highlights – 2023</summary>
-      <div class="report-content">
-        <details><summary>Chegg ESG Framework & Ratings – 2023</summary>
-          <div class="report-content">[Add Framework table content here]</div>
-        </details>
-        <details><summary>Chegg ESG Program & Oversight – 2023</summary>
-          <div class="report-content">[Add Program table content here]</div>
-        </details>
-        <details><summary>Chegg Social & Environmental Impact – 2023</summary>
-          <div class="report-content">[Add Impact table content here]</div>
-        </details>
+    <!-- Báo cáo Chegg ESG Highlights – 2023 -->
+    <div class="document">
+      <h3>Chegg ESG Highlights – 2023</h3>
+      <div class="document-content">
+        <table border="1" cellpadding="8" cellspacing="0" style="background: #fff; border-collapse: collapse; width: 100%;">
+          <thead style="background: #f0f0f0;">
+            <tr>
+              <th>Metric</th>
+              <th>Value (2023)</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Avg Training Hours / Employee</td>
+              <td>12 hours</td>
+              <td>Includes VP readiness, leadership, mental health</td>
+            </tr>
+            <tr>
+              <td>Mental Health Utilization</td>
+              <td>72%</td>
+              <td>High engagement with well-being programs</td>
+            </tr>
+            <tr>
+              <td>ERGs Expanded</td>
+              <td>Yes (Black@Chegg, Crecer)</td>
+              <td>Supported with training & funding</td>
+            </tr>
+            <tr>
+              <td>Awards</td>
+              <td>4 major workplace awards</td>
+              <td>Women, Parents, Tech, Millennials</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-    </details>
+    </div>
+    <!-- Báo cáo Chegg ESG Framework & Ratings – 2023 -->
+    <div class="document">
+      <h3>Chegg ESG Framework & Ratings – 2023</h3>
+      <div class="document-content">
+        <table border="1" cellpadding="8" cellspacing="0" style="background: #fff; border-collapse: collapse; width: 100%;">
+          <thead style="background: #f0f0f0;">
+            <tr>
+              <th>Category</th>
+              <th>Details</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Reporting Standards</td>
+              <td>GRI, SASB, UN SDGs</td>
+            </tr>
+            <tr>
+              <td>Reporting Period</td>
+              <td>Fiscal year 2023 (Jan 1 – Dec 31, 2023)</td>
+            </tr>
+            <tr>
+              <td>Alignment</td>
+              <td>UN 17 Sustainable Development Goals (SDGs)</td>
+            </tr>
+            <tr>
+              <td>ESG Materiality</td>
+              <td>Based on latest materiality assessment aligned to strategy</td>
+            </tr>
+            <tr>
+              <td>MSCI ESG Rating</td>
+              <td>AAA (Highest rating tier)</td>
+            </tr>
+            <tr>
+              <td>S&P Global Yearbook</td>
+              <td>Included</td>
+            </tr>
+            <tr>
+              <td>Sustainalytics Rating</td>
+              <td>7.4 ESG Risk Rating – Negligible Risk</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <!-- Báo cáo Chegg ESG Program & Oversight – 2023 -->
+    <div class="document">
+      <h3>Chegg ESG Program & Oversight – 2023</h3>
+      <div class="document-content">
+        <table border="1" cellpadding="8" cellspacing="0" style="background: #fff; border-collapse: collapse; width: 100%;">
+          <thead style="background: #f0f0f0;">
+            <tr>
+              <th>Focus Area</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>6 ESG Pillars</td>
+              <td>People, Sustainability, Responsibility, Governance, Giving Back, Learners</td>
+            </tr>
+            <tr>
+              <td>Material Topics</td>
+              <td>DEI, Climate Risk, Learning Outcomes, Cybersecurity, Ethics, Transparency</td>
+            </tr>
+            <tr>
+              <td>Stakeholders Engaged</td>
+              <td>300+ students, professors, employees, Board members</td>
+            </tr>
+            <tr>
+              <td>Oversight Structure</td>
+              <td>ESG led by VP IR + CFO; reports to Board & Committees (e.g., Compensation)</td>
+            </tr>
+            <tr>
+              <td>Strategic Importance</td>
+              <td>ESG integrated into long-term strategy and performance tracking</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <!-- Báo cáo Chegg Social & Environmental Impact – 2023 -->
+    <div class="document">
+      <h3>Chegg Social & Environmental Impact – 2023</h3>
+      <div class="document-content">
+        <table border="1" cellpadding="8" cellspacing="0" style="background: #fff; border-collapse: collapse; width: 100%;">
+          <thead style="background: #f0f0f0;">
+            <tr>
+              <th>Initiative</th>
+              <th>Result / Action</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Global Day of Impact</td>
+              <td>841 employees, 20 events</td>
+              <td>980 STEAM kits, 700 meal boxes, 73,061 lbs food sorted</td>
+            </tr>
+            <tr>
+              <td>Volunteer Matching</td>
+              <td>Launched corporate match for nonprofit donations</td>
+              <td>Employees can track volunteer time via internal tools</td>
+            </tr>
+            <tr>
+              <td>Donations Since 2019</td>
+              <td>Over $4.5 million donated</td>
+              <td>Focused on education, inequality, well-being</td>
+            </tr>
+            <tr>
+              <td>Climate Action</td>
+              <td>Collected Scope 1 & 2 (2020), expanded to Scope 3 (2022)</td>
+              <td>Includes sourcing, food, recycling, GHG tracking</td>
+            </tr>
+            <tr>
+              <td>Mental Health & Education</td>
+              <td>Quality Ed & SDG support emphasized</td>
+              <td>CEO links ESG to tech & student success</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
+
+  <!-- ---- Đoạn code tab Helpful Resources ---- -->
   <div id="tab-resources" class="tab">
     <h2>🔗 Helpful Resources</h2>
     <p>This will display useful links or files once added.</p>
   </div>
+
+  <!-- ---- Đoạn code JavaScript xử lý logic ---- -->
   <script>
+    // Hàm thiết lập chuyển đổi giữa các tab
     function setupTabs() {
       document.querySelectorAll('nav button').forEach(button => {
         button.addEventListener('click', () => {
@@ -131,29 +299,92 @@
         });
       });
     }
-    const knowledgeBase = [/*...*/];
+
+    // Hàm xử lý mở/đóng nội dung tài liệu (dùng cho accordion trong tab Reports)
+    function setupDocumentToggle() {
+      document.addEventListener('click', (e) => {
+        if (e.target.matches('.document h3')) {
+          const content = e.target.nextElementSibling;
+          if (content) content.style.display = content.style.display === 'none' ? 'block' : 'none';
+        }
+      });
+    }
+
+    // Cơ sở dữ liệu cho chatbox (danh sách từ khóa và câu trả lời)
+    const knowledgeBase = [
+      {
+        keywords: ["conflict of interest", "personal gain", "board memberships", "financial interests", "outside employment", "gifts", "relationships", "ethics officer"],
+        answer: "Chegg employees must avoid conflicts of interest that can result in personal gain at the expense of the company. These include financial interests, gifts, or board memberships that interfere with responsibilities. Any potential conflicts should be disclosed to the Ethics Officer."
+      },
+      {
+        keywords: ["confidential information", "data protection", "data classification", "trade secrets", "security", "non-disclosure"],
+        answer: "Employees must protect confidential information, use secure handling practices, and avoid improper disclosure of company data or trade secrets. This includes understanding Chegg’s data classification and using secure communication methods."
+      },
+      {
+        keywords: ["bribery", "corruption", "facilitating payment", "anti-corruption", "kickback", "government official"],
+        answer: "Chegg prohibits all forms of bribery and corruption, including offering anything of value to influence a decision. Bribes, kickbacks, or facilitating payments must be reported and never tolerated. Refer to the Anti-Corruption Policy for guidance."
+      },
+      {
+        keywords: ["audit committee", "independent auditors", "auditor independence", "audit oversight", "external audit", "lead audit partner"],
+        answer: "The Audit Committee oversees the work and independence of the Independent Auditors, including appointment, compensation, rotation of lead partners, and assessment of audit quality and independence."
+      },
+      {
+        keywords: ["internal control", "financial control", "material weaknesses", "deficiencies", "internal audit function"],
+        answer: "The Committee reviews the adequacy of internal controls, discusses deficiencies or weaknesses with management and auditors, and monitors responses to internal audit findings."
+      },
+      {
+        keywords: ["risk management", "financial risk", "cybersecurity risk", "risk oversight"],
+        answer: "The Audit Committee reviews major financial and cybersecurity risk exposures and the Company’s procedures for identifying, assessing, and managing these risks."
+      },
+      {
+        keywords: ["emissions", "scope 1", "scope 2", "phát thải", "khí thải"],
+        answer: "According to the Environmental Policy, Chegg measures Scope 1 & 2 emissions and commits to sustainability."
+      },
+      {
+        keywords: ["child labor", "forced labor", "lao động trẻ em", "cưỡng bức lao động"],
+        answer: "The Supplier Code of Conduct strictly prohibits child labor and forced labor."
+      },
+      {
+        keywords: ["materiality", "assessment", "important", "đánh giá", "vấn đề trọng yếu"],
+        answer: "Read the Materiality Assessment Summary to understand how Chegg defines ESG significance across stakeholders."
+      }
+    ];
+
+    // Hàm xử lý logic chatbox
     function handleChat() {
       const inputEl = document.getElementById("chat-input");
       if (!inputEl) return;
       const input = inputEl.value;
       if (!input.trim()) return;
+
       const chatResponse = document.getElementById("chat-response");
       let found = false;
+
       for (const item of knowledgeBase) {
         if (item.keywords.some(k => input.toLowerCase().includes(k))) {
-          chatResponse.innerHTML = `<div class="chat-message user-message">You: ${input}</div><div class="chat-message bot-message">🧠 ${item.answer}</div>` + chatResponse.innerHTML;
+          const userMessage = `<div class="chat-message user-message">You: ${input}</div>`;
+          const botMessage = `<div class="chat-message bot-message">🧠 ${item.answer}</div>`;
+          chatResponse.innerHTML = userMessage + botMessage + chatResponse.innerHTML;
           found = true;
           break;
         }
       }
+
       if (!found) {
-        chatResponse.innerHTML = `<div class="chat-message user-message">You: ${input}</div><div class="chat-message bot-message">❗ No relevant content found. Try another keyword or refer to the documents above.</div>` + chatResponse.innerHTML;
+        const userMessage = `<div class="chat-message user-message">You: ${input}</div>`;
+        const botMessage = `<div class="chat-message bot-message">❗ No relevant content found. Try another keyword or refer to the documents above.</div>`;
+        chatResponse.innerHTML = userMessage + botMessage + chatResponse.innerHTML;
       }
+
+      // Hiển thị khu vực chat-response khi có nội dung
       chatResponse.classList.add('active');
       inputEl.value = "";
     }
+
+    // Khởi tạo khi trang tải
     document.addEventListener('DOMContentLoaded', () => {
       setupTabs();
+      setupDocumentToggle();
     });
   </script>
 </body>
