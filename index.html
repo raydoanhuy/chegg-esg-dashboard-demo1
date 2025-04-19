@@ -72,6 +72,19 @@
       border: 1px solid #ccc;
       border-radius: 6px;
     }
+    .chat-response .chat-message {
+      margin-bottom: 15px;
+      padding: 10px;
+      border-radius: 6px;
+    }
+    .chat-response .user-message {
+      background: #f0f0f0;
+      font-weight: bold;
+    }
+    .chat-response .bot-message {
+      background: #ffffff;
+      border: 1px solid #ddd;
+    }
   </style>
 </head>
 <body>
@@ -91,7 +104,7 @@
         <div class="document-content">
 Chegg cam kết hoạt động bền vững và giảm thiểu tác động môi trường. Để đạt điều này, Chegg thực hiện các biện pháp như:
 - Tái chế văn phòng
-- Sử dụng hệ thống lọc nước thay cho chái nhựa
+- Sử dụng hệ thống lọc nước thay cho chai nhựa
 - Đo Scope 1 & 2 emissions
 - Có quy trình đối chiếu dữ liệu ESG hàng năm
         </div>
@@ -111,7 +124,7 @@ Supplier phải:
       <div class="document">
         <h3>Materiality Assessment Summary</h3>
         <div class="document-content">
-Tóm tắt đánh giá vỪdn đề quan trọng:
+Tóm tắt đánh giá vấn đề quan trọng:
 - Chegg đánh giá tầm quan trọng ESG từ quan điểm nhà đầu tư, người học, nhân viên
 - Yếu tố ESG được xếp hạng theo ảnh hưởng & độ cần thiết
         </div>
@@ -165,18 +178,33 @@ Tóm tắt đánh giá vỪdn đề quan trọng:
     ];
 
     function handleChat() {
-      const input = document.getElementById("chat-input").value.toLowerCase();
+      const input = document.getElementById("chat-input").value;
+      if (!input.trim()) return; // Không xử lý nếu input rỗng
+
+      const chatResponse = document.getElementById("chat-response");
       let found = false;
+
+      // Tìm câu trả lời từ knowledgeBase
       for (const item of knowledgeBase) {
-        if (item.keywords.some(k => input.includes(k))) {
-          document.getElementById("chat-response").innerHTML = "🧠 " + item.answer;
+        if (item.keywords.some(k => input.toLowerCase().includes(k))) {
+          // Thêm câu hỏi và câu trả lời vào lịch sử chat
+          const userMessage = `<div class="chat-message user-message">Bạn: ${input}</div>`;
+          const botMessage = `<div class="chat-message bot-message">🧠 ${item.answer}</div>`;
+          chatResponse.innerHTML = userMessage + botMessage + chatResponse.innerHTML;
           found = true;
           break;
         }
       }
+
+      // Nếu không tìm thấy câu trả lời
       if (!found) {
-        document.getElementById("chat-response").innerHTML = "❗ Không tìm thấy nội dung phù hợp. Hãy thử từ khóa khác hoặc duyệt danh sách bên trên.";
+        const userMessage = `<div class="chat-message user-message">Bạn: ${input}</div>`;
+        const botMessage = `<div class="chat-message bot-message">❗ Không tìm thấy nội dung phù hợp. Hãy thử từ khóa khác hoặc duyệt danh sách bên trên.</div>`;
+        chatResponse.innerHTML = userMessage + botMessage + chatResponse.innerHTML;
       }
+
+      // Xóa nội dung ô input
+      document.getElementById("chat-input").value = "";
     }
   </script>
 </body>
