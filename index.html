@@ -147,20 +147,25 @@ Tóm tắt đánh giá vấn đề quan trọng:
   </div>
 
   <script>
-    document.querySelectorAll('nav button').forEach(button => {
-      button.addEventListener('click', () => {
-        document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
-        const id = button.getAttribute('data-tab');
-        document.getElementById(`tab-${id}`).classList.add('active');
+    function setupTabs() {
+      document.querySelectorAll('nav button').forEach(button => {
+        button.addEventListener('click', () => {
+          document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+          const id = button.getAttribute('data-tab');
+          const selectedTab = document.getElementById(`tab-${id}`);
+          if (selectedTab) selectedTab.classList.add('active');
+        });
       });
-    });
+    }
 
-    document.addEventListener('click', (e) => {
-      if (e.target.matches('.document h3')) {
-        const content = e.target.nextElementSibling;
-        content.style.display = content.style.display === 'none' ? 'block' : 'none';
-      }
-    });
+    function setupDocumentToggle() {
+      document.addEventListener('click', (e) => {
+        if (e.target.matches('.document h3')) {
+          const content = e.target.nextElementSibling;
+          if (content) content.style.display = content.style.display === 'none' ? 'block' : 'none';
+        }
+      });
+    }
 
     const knowledgeBase = [
       {
@@ -178,16 +183,16 @@ Tóm tắt đánh giá vấn đề quan trọng:
     ];
 
     function handleChat() {
-      const input = document.getElementById("chat-input").value;
-      if (!input.trim()) return; // Không xử lý nếu input rỗng
+      const inputEl = document.getElementById("chat-input");
+      if (!inputEl) return;
+      const input = inputEl.value;
+      if (!input.trim()) return;
 
       const chatResponse = document.getElementById("chat-response");
       let found = false;
 
-      // Tìm câu trả lời từ knowledgeBase
       for (const item of knowledgeBase) {
         if (item.keywords.some(k => input.toLowerCase().includes(k))) {
-          // Thêm câu hỏi và câu trả lời vào lịch sử chat
           const userMessage = `<div class="chat-message user-message">Bạn: ${input}</div>`;
           const botMessage = `<div class="chat-message bot-message">🧠 ${item.answer}</div>`;
           chatResponse.innerHTML = userMessage + botMessage + chatResponse.innerHTML;
@@ -196,16 +201,19 @@ Tóm tắt đánh giá vấn đề quan trọng:
         }
       }
 
-      // Nếu không tìm thấy câu trả lời
       if (!found) {
         const userMessage = `<div class="chat-message user-message">Bạn: ${input}</div>`;
         const botMessage = `<div class="chat-message bot-message">❗ Không tìm thấy nội dung phù hợp. Hãy thử từ khóa khác hoặc duyệt danh sách bên trên.</div>`;
         chatResponse.innerHTML = userMessage + botMessage + chatResponse.innerHTML;
       }
 
-      // Xóa nội dung ô input
-      document.getElementById("chat-input").value = "";
+      inputEl.value = "";
     }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      setupTabs();
+      setupDocumentToggle();
+    });
   </script>
 </body>
 </html>
